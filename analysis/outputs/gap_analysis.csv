@@ -1,0 +1,10 @@
+category,demand_score,supply_score,gap_score,recommendation
+water,4.98,4.0,0.98,ADD / INCREASE STOCK
+rice/cooked food,4.43,5.0,-0.57,REDUCE STOCK
+bread,4.18,5.57,-1.39,REDUCE STOCK
+soft drinks,5.1,3.57,1.53,ADD / INCREASE STOCK
+indomie/noodles,2.45,4.57,-2.12,REDUCE STOCK
+biscuits/snacks,3.16,6.07,-2.91,REDUCE STOCK
+beverages,1.72,3.21,-1.49,REDUCE STOCK
+stationery,1.69,0.43,1.26,ADD / INCREASE STOCK
+toiletries,1.86,0.29,1.57,ADD / INCREASE STOCK

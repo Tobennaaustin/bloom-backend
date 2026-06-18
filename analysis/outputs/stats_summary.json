@@ -1,0 +1,123 @@
+{
+  "dataset": {
+    "student_responses": 465,
+    "vendor_responses": 7,
+    "data_collection_period": "May 2026"
+  },
+  "student_demographics": {
+    "level_distribution": {
+      "100": 69,
+      "200": 87,
+      "300": 95,
+      "400": 214
+    },
+    "college_distribution": {
+      "CONAS": 225,
+      "CBSS": 126,
+      "CACOS": 114
+    }
+  },
+  "demand_insights": {
+    "estimated_mean_daily_spend_naira": 2126.88,
+    "top_product_by_demand": "Soft drinks",
+    "top_product_purchase_rate_pct": 62.6,
+    "category_demand_scores": {
+      "Water (sachet/bottle)": 2.46,
+      "Cooked Food": 3.757,
+      "Bread": 3.039,
+      "Stationery": 2.181,
+      "Toiletries": 2.624
+    }
+  },
+  "stockout_findings": {
+    "students_facing_stockouts_sometimes_or_more": 261,
+    "pct_students_stopped_buying_due_to_stockout": 42.4
+  },
+  "statistical_tests": {
+    "chi_square_buying_freq_vs_stockout": {
+      "chi2": 7.9221,
+      "df": 16,
+      "p_value": 0.9512,
+      "significant": false
+    },
+    "chi_square_college_vs_stationery": {
+      "chi2": 2.1856,
+      "df": 2,
+      "p_value": 0.3353,
+      "significant": false
+    },
+    "chi_square_stockout_vs_vendor_abandonment": {
+      "chi2": 7.8411,
+      "df": 12,
+      "p_value": 0.7974,
+      "significant": false
+    },
+    "spearman_frequency_vs_spend": {
+      "rs": 0.0084,
+      "p_value": 0.857,
+      "significant": false
+    }
+  },
+  "gap_analysis": {
+    "water": {
+      "demand_score": 4.98,
+      "supply_score": 4.0,
+      "gap_score": 0.98,
+      "recommendation": "ADD / INCREASE STOCK"
+    },
+    "rice/cooked food": {
+      "demand_score": 4.43,
+      "supply_score": 5.0,
+      "gap_score": -0.57,
+      "recommendation": "REDUCE STOCK"
+    },
+    "bread": {
+      "demand_score": 4.18,
+      "supply_score": 5.57,
+      "gap_score": -1.39,
+      "recommendation": "REDUCE STOCK"
+    },
+    "soft drinks": {
+      "demand_score": 5.1,
+      "supply_score": 3.57,
+      "gap_score": 1.53,
+      "recommendation": "ADD / INCREASE STOCK"
+    },
+    "indomie/noodles": {
+      "demand_score": 2.45,
+      "supply_score": 4.57,
+      "gap_score": -2.12,
+      "recommendation": "REDUCE STOCK"
+    },
+    "biscuits/snacks": {
+      "demand_score": 3.16,
+      "supply_score": 6.07,
+      "gap_score": -2.91,
+      "recommendation": "REDUCE STOCK"
+    },
+    "beverages": {
+      "demand_score": 1.72,
+      "supply_score": 3.21,
+      "gap_score": -1.49,
+      "recommendation": "REDUCE STOCK"
+    },
+    "stationery": {
+      "demand_score": 1.69,
+      "supply_score": 0.43,
+      "gap_score": 1.26,
+      "recommendation": "ADD / INCREASE STOCK"
+    },
+    "toiletries": {
+      "demand_score": 1.86,
+      "supply_score": 0.29,
+      "gap_score": 1.57,
+      "recommendation": "ADD / INCREASE STOCK"
+    }
+  },
+  "vendor_performance": {
+    "mean_stockout_risk": 3.71,
+    "mean_unmet_demand": 2.43,
+    "vendors_earning_above_30k": 6,
+    "all_would_use_app": true
+  }
+}

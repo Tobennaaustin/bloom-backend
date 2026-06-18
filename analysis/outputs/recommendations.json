@@ -1,0 +1,311 @@
+{
+  "generated_for": "Crawford University Campus Vendors",
+  "based_on": "465 student responses + 7 vendor responses",
+  "recommendations_by_store_type": {
+    "Food Vendor (Cooked Food / Snacks)": {
+      "top_products_to_stock": [
+        {
+          "product": "Rice",
+          "weekly_units": 210,
+          "restock_every": "Daily",
+          "demand_score": 7.4
+        },
+        {
+          "product": "Bread and egg",
+          "weekly_units": 150,
+          "restock_every": "Daily",
+          "demand_score": 6.1
+        },
+        {
+          "product": "Indomie / Noodles",
+          "weekly_units": 120,
+          "restock_every": "Every 2 days",
+          "demand_score": 4.9
+        },
+        {
+          "product": "Beans",
+          "weekly_units": 90,
+          "restock_every": "Every 2 days",
+          "demand_score": 4.2
+        },
+        {
+          "product": "Soft drinks (cold)",
+          "weekly_units": 80,
+          "restock_every": "Every 2 days",
+          "demand_score": 6.3
+        }
+      ],
+      "add_these_products": [
+        "Swallow (eba/fufu)",
+        "Moi moi",
+        "Yam and egg",
+        "Pepper soup"
+      ],
+      "reduce_or_remove": [],
+      "restock_alert": "Restock rice when stock falls below 30 portions. Restock drinks when below 20 bottles.",
+      "insight": "Food vendors face the highest stockout risk on campus. Students eat on campus daily \u2014 65% of respondents buy cooked food at least once a day. Swallow and moi moi are the most requested additions across all food vendors."
+    },
+    "Provision / Grocery Store": {
+      "top_products_to_stock": [
+        {
+          "product": "Pure water (sachet bags)",
+          "weekly_units": 180,
+          "restock_every": "Every 2 days",
+          "demand_score": 8.3
+        },
+        {
+          "product": "Soft drinks (cold)",
+          "weekly_units": 100,
+          "restock_every": "Every 2 days",
+          "demand_score": 6.3
+        },
+        {
+          "product": "Bread",
+          "weekly_units": 90,
+          "restock_every": "Daily",
+          "demand_score": 6.1
+        },
+        {
+          "product": "Gala / Sausage roll",
+          "weekly_units": 80,
+          "restock_every": "Every 2 days",
+          "demand_score": 5.3
+        },
+        {
+          "product": "Biscuits / Snacks",
+          "weekly_units": 70,
+          "restock_every": "Every 3 days",
+          "demand_score": 5.3
+        }
+      ],
+      "add_these_products": [
+        "Energy drinks (Predator/Power Horse)",
+        "Canned malt",
+        "Bottled groundnut",
+        "Phone accessories"
+      ],
+      "reduce_or_remove": [
+        "Milo / Bournvita (overstocked by 2 vendors)",
+        "Specific seasoning brands (slow mover)"
+      ],
+      "restock_alert": "Restock pure water when below 30 bags. Cold drinks are high demand \u2014 ensure chiller is always stocked.",
+      "insight": "Pure water is the single highest-demand item on campus (83% of students buy it regularly). Cold drinks are the #1 item students cannot find. Provision stores holding Milo and specific seasoning brands report slow movement \u2014 consider reducing these quantities."
+    },
+    "Drinks / Water / Beverages": {
+      "top_products_to_stock": [
+        {
+          "product": "Pure water (sachet bags)",
+          "weekly_units": 200,
+          "restock_every": "Daily",
+          "demand_score": 8.3
+        },
+        {
+          "product": "Soft drinks (assorted, chilled)",
+          "weekly_units": 120,
+          "restock_every": "Every 2 days",
+          "demand_score": 6.3
+        },
+        {
+          "product": "Bread",
+          "weekly_units": 60,
+          "restock_every": "Daily",
+          "demand_score": 6.1
+        },
+        {
+          "product": "Gala",
+          "weekly_units": 50,
+          "restock_every": "Every 2 days",
+          "demand_score": 5.3
+        },
+        {
+          "product": "Energy drinks",
+          "weekly_units": 30,
+          "restock_every": "Weekly",
+          "demand_score": 1.9
+        }
+      ],
+      "add_these_products": [
+        "Groundnut (bottled/packaged)",
+        "Nutri Milk / hollandia",
+        "Sugar sachets"
+      ],
+      "reduce_or_remove": [
+        "Packaged biscuits (slow mover per vendor report)"
+      ],
+      "restock_alert": "Pure water is your core product \u2014 never let stock fall below 50 bags. Gala and bread are impulse buys that drive footfall.",
+      "insight": "Drink vendors currently supply the right core products. The gap is in chilled availability \u2014 students frequently cannot find cold drinks. Energy drinks are an emerging demand from students but undersupplied. Groundnut and nutri milk are frequently requested by students from this vendor category."
+    }
+  },
+  "restock_points": {
+    "Food Vendor (Cooked Food / Snacks)": [
+      {
+        "product": "Rice",
+        "avg_daily_sales": 35.0,
+        "lead_time_days": 2,
+        "restock_point": 105
+      },
+      {
+        "product": "Bread and egg",
+        "avg_daily_sales": 25.0,
+        "lead_time_days": 2,
+        "restock_point": 75
+      },
+      {
+        "product": "Indomie / Noodles",
+        "avg_daily_sales": 20.0,
+        "lead_time_days": 3,
+        "restock_point": 90
+      },
+      {
+        "product": "Beans",
+        "avg_daily_sales": 15.0,
+        "lead_time_days": 3,
+        "restock_point": 68
+      },
+      {
+        "product": "Soft drinks (cold)",
+        "avg_daily_sales": 13.3,
+        "lead_time_days": 3,
+        "restock_point": 60
+      }
+    ],
+    "Provision / Grocery Store": [
+      {
+        "product": "Pure water (sachet bags)",
+        "avg_daily_sales": 30.0,
+        "lead_time_days": 3,
+        "restock_point": 135
+      },
+      {
+        "product": "Soft drinks (cold)",
+        "avg_daily_sales": 16.7,
+        "lead_time_days": 3,
+        "restock_point": 75
+      },
+      {
+        "product": "Bread",
+        "avg_daily_sales": 15.0,
+        "lead_time_days": 2,
+        "restock_point": 45
+      },
+      {
+        "product": "Gala / Sausage roll",
+        "avg_daily_sales": 13.3,
+        "lead_time_days": 3,
+        "restock_point": 60
+      },
+      {
+        "product": "Biscuits / Snacks",
+        "avg_daily_sales": 11.7,
+        "lead_time_days": 3,
+        "restock_point": 53
+      }
+    ],
+    "Drinks / Water / Beverages": [
+      {
+        "product": "Pure water (sachet bags)",
+        "avg_daily_sales": 33.3,
+        "lead_time_days": 2,
+        "restock_point": 100
+      },
+      {
+        "product": "Soft drinks (assorted, chilled)",
+        "avg_daily_sales": 20.0,
+        "lead_time_days": 3,
+        "restock_point": 90
+      },
+      {
+        "product": "Bread",
+        "avg_daily_sales": 10.0,
+        "lead_time_days": 2,
+        "restock_point": 30
+      },
+      {
+        "product": "Gala",
+        "avg_daily_sales": 8.3,
+        "lead_time_days": 3,
+        "restock_point": 37
+      },
+      {
+        "product": "Energy drinks",
+        "avg_daily_sales": 5.0,
+        "lead_time_days": 3,
+        "restock_point": 22
+      }
+    ]
+  },
+  "campus_wide_top5_demand": [
+    {
+      "rank": 1,
+      "product": "Soft drinks",
+      "purchase_rate_pct": 62.6,
+      "demand_score": 5.1
+    },
+    {
+      "rank": 2,
+      "product": "Bottled water / pure water (sachet)",
+      "purchase_rate_pct": 83.0,
+      "demand_score": 4.98
+    },
+    {
+      "rank": 3,
+      "product": "Rice / beans / cooked food",
+      "purchase_rate_pct": 73.8,
+      "demand_score": 4.43
+    },
+    {
+      "rank": 4,
+      "product": "Bread / Butter bread",
+      "purchase_rate_pct": 50.8,
+      "demand_score": 4.18
+    },
+    {
+      "rank": 5,
+      "product": "Printing / photocopy",
+      "purchase_rate_pct": 43.4,
+      "demand_score": 3.23
+    }
+  ],
+  "top_unmet_demand": [
+    {
+      "item": "Swallow",
+      "vendor_count": 2
+    },
+    {
+      "item": "Energy Drink",
+      "vendor_count": 2
+    },
+    {
+      "item": "Beans And Bread",
+      "vendor_count": 1
+    },
+    {
+      "item": "Salad",
+      "vendor_count": 1
+    },
+    {
+      "item": "Snacks(Confections)",
+      "vendor_count": 1
+    },
+    {
+      "item": "Pepper Soup",
+      "vendor_count": 1
+    },
+    {
+      "item": "Body Lotion",
+      "vendor_count": 1
+    },
+    {
+      "item": "Soap Case",
+      "vendor_count": 1
+    },
+    {
+      "item": "Air Freshner",
+      "vendor_count": 1
+    },
+    {
+      "item": "Nutella",
+      "vendor_count": 1
+    }
+  ]
+}
