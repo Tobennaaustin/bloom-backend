@@ -21,8 +21,8 @@ def create_app():
 
     CORS(app, origins=[
         "http://localhost:5173",
-        "http://localhost:3000",
-        os.getenv("FRONTEND_URL", "http://localhost:5173"),
+        "https://bloom-theta-pink.vercel.app/",
+        os.getenv("FRONTEND_URL", "https://bloom-theta-pink.vercel.app/"),
     ], supports_credentials=True)
 
     Bcrypt(app)
