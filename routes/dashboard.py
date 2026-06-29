@@ -21,6 +21,28 @@ def _get_vendor(vendor_id: str):
     except Exception:
         return None
 
+def _get_seasonal_override():
+    """
+    Read the admin-set seasonal override from the settings collection.
+    Query params (?period=&season=) take priority for live testing.
+    Returns (period_override, season_override), defaulting to 'auto'.
+    """
+    period = request.args.get("period", "").strip().lower()
+    season = request.args.get("season", "").strip().lower()
+
+    if not period or not season:
+        settings = get_collection("settings")
+        if settings is not None:
+            try:
+                doc = settings.find_one({"_id": "seasonal"})
+                if doc:
+                    period = period or doc.get("period", "auto")
+                    season = season or doc.get("season", "auto")
+            except Exception:
+                pass
+
+    return (period or "auto", season or "auto")
+
 # ── Full dashboard data ───────────────────────────────────────────────────────
 
 @dashboard_bp.route("", methods=["GET"])
@@ -31,10 +53,13 @@ def get_dashboard():
     if not vendor:
         return jsonify({"error": "Vendor not found"}), 404
 
+    period_override, season_override = _get_seasonal_override()
     report = generate_report(
         store_type   = vendor.get("storeType", "mixed"),
         products     = vendor.get("products", []),
         restock_time = vendor.get("restockTime", "weekly"),
+        period_override = period_override,
+        season_override = season_override,
     )
     return jsonify(report), 200
 
@@ -48,10 +73,13 @@ def get_products():
     if not vendor:
         return jsonify({"error": "Vendor not found"}), 404
 
+    period_override, season_override = _get_seasonal_override()
     report = generate_report(
         store_type   = vendor.get("storeType", "mixed"),
         products     = vendor.get("products", []),
         restock_time = vendor.get("restockTime", "weekly"),
+        period_override = period_override,
+        season_override = season_override,
     )
     return jsonify({"products": report["topProducts"]}), 200
 
@@ -83,10 +111,13 @@ def get_alerts():
     if not vendor:
         return jsonify({"error": "Vendor not found"}), 404
 
+    period_override, season_override = _get_seasonal_override()
     report = generate_report(
         store_type   = vendor.get("storeType", "mixed"),
         products     = vendor.get("products", []),
         restock_time = vendor.get("restockTime", "weekly"),
+        period_override = period_override,
+        season_override = season_override,
     )
     return jsonify({"alerts": report["restockAlerts"]}), 200
 
@@ -100,10 +131,13 @@ def get_recommendations():
     if not vendor:
         return jsonify({"error": "Vendor not found"}), 404
 
+    period_override, season_override = _get_seasonal_override()
     report = generate_report(
         store_type   = vendor.get("storeType", "mixed"),
         products     = vendor.get("products", []),
         restock_time = vendor.get("restockTime", "weekly"),
+        period_override = period_override,
+        season_override = season_override,
     )
     return jsonify({
         "recommendations": report["recommendations"],
@@ -122,9 +156,12 @@ def get_gap_analysis():
     if not vendor:
         return jsonify({"error": "Vendor not found"}), 404
 
+    period_override, season_override = _get_seasonal_override()
     report = generate_report(
         store_type   = vendor.get("storeType", "mixed"),
         products     = vendor.get("products", []),
         restock_time = vendor.get("restockTime", "weekly"),
+        period_override = period_override,
+        season_override = season_override,
     )
     return jsonify({"gapAnalysis": report["gapAnalysis"]}), 200

@@ -249,3 +249,60 @@ def admin_health():
         "adminKey": "configured" if os.getenv("ADMIN_KEY") else "using default",
         "timestamp": datetime.now(timezone.utc).isoformat(),
     })
+
+
+# ── Seasonal period control ───────────────────────────────────────────────────
+
+@admin_bp.route("/seasonal", methods=["GET"])
+def get_seasonal_setting():
+    err = _require_admin()
+    if err: return err
+
+    from services.seasonal_engine import get_active_context, VALID_PERIODS, VALID_SEASONS
+
+    period, season = "auto", "auto"
+    settings = get_collection("settings")
+    if settings is not None:
+        try:
+            doc = settings.find_one({"_id": "seasonal"})
+            if doc:
+                period = doc.get("period", "auto")
+                season = doc.get("season", "auto")
+        except Exception:
+            pass
+
+    context = get_active_context(period_override=period, season_override=season)
+    return jsonify({
+        "currentSetting": {"period": period, "season": season},
+        "detected": context,
+        "validPeriods": VALID_PERIODS,
+        "validSeasons": VALID_SEASONS,
+    })
+
+
+@admin_bp.route("/seasonal", methods=["PUT"])
+def set_seasonal_setting():
+    err = _require_admin()
+    if err: return err
+
+    from services.seasonal_engine import VALID_PERIODS, VALID_SEASONS
+
+    data = request.get_json() or {}
+    period = data.get("period", "auto")
+    season = data.get("season", "auto")
+
+    if period not in VALID_PERIODS:
+        return jsonify({"error": f"Invalid period. Use one of {VALID_PERIODS}"}), 400
+    if season not in VALID_SEASONS:
+        return jsonify({"error": f"Invalid season. Use one of {VALID_SEASONS}"}), 400
+
+    settings = get_collection("settings")
+    if settings is None:
+        return jsonify({"message": "Saved (demo mode, not persisted)", "period": period, "season": season}), 200
+
+    settings.update_one(
+        {"_id": "seasonal"},
+        {"$set": {"period": period, "season": season}},
+        upsert=True,
+    )
+    return jsonify({"message": "Seasonal setting updated", "period": period, "season": season}), 200

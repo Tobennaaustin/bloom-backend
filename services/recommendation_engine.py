@@ -126,11 +126,17 @@ def _urgency(current: int, rp: int) -> str:
     return "ok"
 
 
-def generate_report(store_type: str, products: List[str], restock_time: str) -> Dict[str, Any]:
+def generate_report(store_type: str, products: List[str], restock_time: str,
+                    period_override: str = "auto", season_override: str = "auto") -> Dict[str, Any]:
     """
     Core recommendation function.
     Returns the full dashboard payload for a vendor.
+    Now includes a seasonal/contextual demand layer on top of the static scores.
     """
+    from services.seasonal_engine import (
+        get_active_context, get_seasonal_products, build_seasonal_banner, apply_seasonal_boost
+    )
+
     profile = STORE_PROFILES.get(store_type, STORE_PROFILES["mixed"])
     lead    = profile["restock_lead"]
     share   = profile["market_share"]
@@ -226,6 +232,27 @@ def generate_report(store_type: str, products: List[str], restock_time: str) -> 
     else:
         avg_score = 5.0
 
+    # ── Seasonal / contextual demand layer ────────────────────────────────────
+    context = get_active_context(period_override=period_override, season_override=season_override)
+    seasonal_products = get_seasonal_products(context)
+    seasonal_banner = build_seasonal_banner(context, seasonal_products)
+
+    # Boost any of the vendor's products that are in season, and re-sort
+    top_products = apply_seasonal_boost(top_products, seasonal_products)
+
+    # Seasonal items the vendor does NOT yet stock become "add" suggestions
+    vendor_product_keys = [p.lower() for p in products]
+    seasonal_add = []
+    for sp in seasonal_products:
+        already = any(sp["product"].lower() in vp or vp in sp["product"].lower()
+                      for vp in vendor_product_keys)
+        if not already:
+            seasonal_add.append({
+                "product": sp["product"],
+                "reason":  sp["reason"],
+                "trigger": sp["trigger"],
+            })
+
     return {
         "storeType":             store_type,
         "demandScore":           avg_score,
@@ -237,6 +264,11 @@ def generate_report(store_type: str, products: List[str], restock_time: str) -> 
         "addThese":              [r["product"] for r in recommendations if r["type"] == "add"][:5],
         "reduce":                [r["product"] for r in recommendations if r["type"] == "reduce"][:3],
         "gapAnalysis":           gap_analysis,
+        # New seasonal fields
+        "seasonalContext":       context,
+        "seasonalBanner":        seasonal_banner,
+        "seasonalProducts":      seasonal_products,
+        "seasonalAdd":           seasonal_add[:8],
     }
 
 
